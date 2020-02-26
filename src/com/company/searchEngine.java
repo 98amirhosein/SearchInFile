@@ -4,10 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 public class searchEngine {
     String files[];
 
@@ -27,7 +23,7 @@ public class searchEngine {
 
 
     private void phraseGenerator(String phrase) {
-        String and[] = phrase.split("AND");
+        String and[] = phrase.split("OR");
         for (int i = 0; i < files.length; i++) {
             for (int j = 0; j < and.length; j++) {
                 if (!files[i].endsWith(".txt"))
@@ -42,7 +38,7 @@ public class searchEngine {
     }
 
     boolean andSearch(String file, String str) {
-        String or[] = str.split("OR");
+        String or[] = str.split("AND");
         for (int i = 0; i < or.length; i++) {
             if (!search(file, or[i].trim()))
                 return true;
