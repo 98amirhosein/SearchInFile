@@ -24,12 +24,11 @@ public class searchEngine {
 
     private void phraseGenerator(String phrase) {
         String and[] = phrase.split("AND");
-        boolean flag = true;
         for (int i = 0; i < files.length; i++) {
             for (int j = 0; j < and.length; j++) {
                 if (!files[i].endsWith(".txt"))
                     continue;
-                if (andSearch(files[i], and[j])) {
+                if (!andSearch(files[i], and[j])) {
                     System.out.println(files[i]);
                     break;
 
@@ -41,7 +40,7 @@ public class searchEngine {
     boolean andSearch(String file, String str) {
         String or[] = str.split("OR");
         for (int i = 0; i < or.length; i++) {
-            if (search(file, or[i]))
+            if (!search(file, or[i].trim()))
                 return true;
         }
         return false;
