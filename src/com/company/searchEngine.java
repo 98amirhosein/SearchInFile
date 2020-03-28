@@ -2,20 +2,16 @@ package com.company;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 public class searchEngine {
-
-
     String files[];
-
 
     public searchEngine(String dir, String phrase) {
         this.files = filesLoader(dir);
         phraseGenerator(phrase);
     }
-
-
 
     private String[] filesLoader(String dir) {
         File folder = new File(dir);
@@ -29,16 +25,18 @@ public class searchEngine {
 
     private void phraseGenerator(String phrase) {
         String and[] = phrase.split("OR");
-        for (int i = 0; i < files.length; i++)
+        for (int i = 0; i < files.length; i++) {
             for (int j = 0; j < and.length; j++) {
+                if (new File(files[i]).isDirectory())
+                    continue;
                 if (!andSearch(files[i], and[j])) {
                     System.out.println(files[i]);
                     break;
 
                 }
             }
+        }
     }
-
 
     boolean andSearch(String file, String str) {
         String or[] = str.split("AND");
