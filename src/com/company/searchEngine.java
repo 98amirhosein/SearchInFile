@@ -7,11 +7,13 @@ import java.util.Scanner;
 public class searchEngine {
     String files[];
 
+    //constructor
     public searchEngine(String dir, String phrase) {
         this.files = filesLoader(dir);
         phraseGenerator(phrase);
     }
 
+    //load Files data
     private String[] filesLoader(String dir) {
         File folder = new File(dir);
         String[] files = folder.list();
@@ -21,7 +23,7 @@ public class searchEngine {
         return files;
     }
 
-
+    // generate query to execute
     private void phraseGenerator(String phrase) {
         String and[] = phrase.split("OR");
         for (int i = 0; i < files.length; i++) {
@@ -37,6 +39,7 @@ public class searchEngine {
         }
     }
 
+    //manage query to search and operations
     boolean andSearch(String file, String str) {
         String or[] = str.split("AND");
         for (int i = 0; i < or.length; i++) {
@@ -46,6 +49,7 @@ public class searchEngine {
         return false;
     }
 
+    //search query
     private boolean search(String file, String str) {
         final Scanner scanner;
         try {

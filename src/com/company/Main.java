@@ -8,7 +8,7 @@ public class Main {
         System.out.println("Please enter your directory : ");
         Scanner sc = new Scanner(System.in);
         String dir = sc.nextLine();
-        System.out.println("Please enter your query : ");
+        System.out.println("Please enter your query (contain OR/AND): ");
         String phrase = sc.nextLine();
         searchEngine engin = new searchEngine(dir , phrase);
         }
