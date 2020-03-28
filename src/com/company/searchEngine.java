@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class searchEngine {
-    String files[];
+    String directoris[];
 
     //constructor
     public searchEngine(String dir, String phrase) {
-        this.files = filesLoader(dir);
+        this.directoris = filesLoader(dir);
         phraseGenerator(phrase);
     }
 
@@ -26,12 +26,12 @@ public class searchEngine {
     // generate query to execute
     private void phraseGenerator(String phrase) {
         String and[] = phrase.split("OR");
-        for (int i = 0; i < files.length; i++) {
+        for (int i = 0; i < directoris.length; i++) {
             for (int j = 0; j < and.length; j++) {
-                if (new File(files[i]).isDirectory())
+                if (new File(directoris[i]).isDirectory())
                     continue;
-                if (!andSearch(files[i], and[j])) {
-                    System.out.println(files[i]);
+                if (!andSearch(directoris[i], and[j])) {
+                    System.out.println(directoris[i]);
                     break;
 
                 }
@@ -56,8 +56,9 @@ public class searchEngine {
             scanner = new Scanner(new File(file));
 
             while (scanner.hasNextLine()) {
-                final String lineFromFile = scanner.nextLine();
-                if (lineFromFile.contains(str)) {
+                String lineFromFile = scanner.nextLine();
+                lineFromFile = lineFromFile.toLowerCase();
+                if (lineFromFile.contains(str.toLowerCase())) {
                     return true;
                 }
             }

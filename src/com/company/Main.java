@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Please enter your directory : ");
+        System.out.println("Please enter your directoris : ");
         Scanner sc = new Scanner(System.in);
         String dir = sc.nextLine();
         System.out.println("Please enter your query (contain OR/AND): ");
