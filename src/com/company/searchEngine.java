@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Files;
 import java.util.Scanner;
 
 public class searchEngine {
@@ -59,7 +58,6 @@ public class searchEngine {
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
         return false;
     }
