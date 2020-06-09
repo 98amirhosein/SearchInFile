@@ -10,10 +10,15 @@ public class Main {
         String dir = sc.nextLine();
         System.out.println("Please enter your query (contain OR/AND): ");
         String phrase = sc.nextLine();
-        searchEngine engin = new searchEngine(dir , phrase);
-        }
+        try {
+            searchEngine engin = new searchEngine(dir, phrase);
 
+        } catch (Exception e) {
+            System.out.println("your input is wrong! \n\t\t\t\t please try again <3");
+        }
     }
+
+}
 
 
 
